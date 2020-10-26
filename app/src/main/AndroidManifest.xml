@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bluetoothledemo">
+    package="com.example.bleconnectdemo">
     <uses-feature android:name="android.hardware.bluetooth" />
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -24,7 +24,7 @@
             </intent-filter>
         </activity>
 
-        <service android:name=".BluetoothLeConnectionService"/>
+        <service android:name=".BLEConnectionService"/>
 
     </application>
 

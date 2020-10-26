@@ -1,9 +1,9 @@
 <resources>
-    <string name="app_name">BluetoothLeDemo</string>
+    <string name="app_name">BLEConnectDemo</string>
 
     <string name="disabled">Your device does not support Bluetooth</string>
 
-    <string name="title">Bluetooth Le Demo</string>
+    <string name="title">BLEConnectDemo</string>
     <string name="bluetooth_connection">Bluetooth connect</string>
     <string name="enable_notification">Enable notification</string>
     <string name="send_ping">Send ping</string>

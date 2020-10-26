@@ -1,4 +1,4 @@
-package com.example.bluetoothledemo;
+package com.example.bleconnectdemo;
 
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
@@ -21,7 +21,7 @@ import androidx.annotation.Nullable;
 
 import java.util.UUID;
 
-public class BluetoothLeConnectionService extends Service {
+public class BLEConnectionService extends Service {
     private static final String TAG = "BTLeConnectionServ";
     private Looper serviceLooper;
     private ServiceHandler serviceHandler;
@@ -37,25 +37,25 @@ public class BluetoothLeConnectionService extends Service {
 
     // Action strings for Intents that will tell this service what to do
     public final static String GATT_START_CONNECTION =
-            "com.example.bluetoothledemo.GATT_START_CONNECTION";
+            "com.example.bleconnectdemo.GATT_START_CONNECTION";
     public final static String GATT_SET_NOTIFICATION =
-            "com.example.bluetoothledemo.GATT_SET_NOTIFICATION";
+            "com.example.bleconnectdemo.GATT_SET_NOTIFICATION";
     public final static String GATT_WRITE_MESSAGE =
-            "com.example.bluetoothledemo.GATT_WRITE_MESSAGE";
+            "com.example.bleconnectdemo.GATT_WRITE_MESSAGE";
     public final static String GATT_STOP_CONNECTION =
-            "com.example.bluetoothledemo.GATT_STOP_CONNECTION";
+            "com.example.bleconnectdemo.GATT_STOP_CONNECTION";
 
     // These are Actions that this service will broadcast
     public final static String ACTION_GATT_CONNECTED =
-            "com.example.bluetoothledemo.ACTION_GATT_CONNECTED";
+            "com.example.bleconnectdemo.ACTION_GATT_CONNECTED";
     public final static String ACTION_GATT_DISCONNECTED =
-            "com.example.bluetoothledemo.ACTION_GATT_DISCONNECTED";
+            "com.example.bleconnectdemo.ACTION_GATT_DISCONNECTED";
     public final static String ACTION_GATT_SERVICES_DISCOVERED =
-            "com.example.bluetoothledemo.ACTION_GATT_SERVICES_DISCOVERED";
+            "com.example.bleconnectdemo.ACTION_GATT_SERVICES_DISCOVERED";
     public final static String ACTION_DATA_AVAILABLE =
-            "com.example.bluetoothledemo.ACTION_DATA_AVAILABLE";
+            "com.example.bleconnectdemo.ACTION_DATA_AVAILABLE";
     public final static String EXTRA_DATA =
-            "com.example.bluetoothledemo.EXTRA_DATA";
+            "com.example.bleconnectdemo.EXTRA_DATA";
 
     // these are the relevant UUIDs for the HM-10 module
     public final static UUID CUSTOM_SERVICE =
@@ -66,7 +66,7 @@ public class BluetoothLeConnectionService extends Service {
             UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
 
     // empty constructor
-    public BluetoothLeConnectionService() { }
+    public BLEConnectionService() { }
 
     @Nullable
     @Override

@@ -1,4 +1,4 @@
-package com.example.bluetoothledemo;
+package com.example.bleconnectdemo;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -69,8 +69,8 @@ public class DeviceListActivity extends AppCompatActivity {
 
         // Register for broadcasts
         IntentFilter filter = new IntentFilter();
-        filter.addAction(BluetoothLeConnectionService.ACTION_GATT_CONNECTED);
-        filter.addAction(BluetoothLeConnectionService.ACTION_GATT_DISCONNECTED);
+        filter.addAction(BLEConnectionService.ACTION_GATT_CONNECTED);
+        filter.addAction(BLEConnectionService.ACTION_GATT_DISCONNECTED);
         registerReceiver(mReceiver, filter);
     }
 
@@ -150,8 +150,8 @@ public class DeviceListActivity extends AppCompatActivity {
 
             // Request the service to start the connection
             Intent intent = new Intent();
-            intent.setAction(BluetoothLeConnectionService.GATT_START_CONNECTION);
-            intent.setClass(getApplicationContext(), BluetoothLeConnectionService.class);
+            intent.setAction(BLEConnectionService.GATT_START_CONNECTION);
+            intent.setClass(getApplicationContext(), BLEConnectionService.class);
             intent.putExtra( "address", btdevice.getAddress() );
             startService(intent);
         }
@@ -163,14 +163,14 @@ public class DeviceListActivity extends AppCompatActivity {
         String action = intent.getAction();
         Log.d(TAG, "onReceive intent: " + action);
 
-        if(BluetoothLeConnectionService.ACTION_GATT_CONNECTED.equals(action)) {
+        if(BLEConnectionService.ACTION_GATT_CONNECTED.equals(action)) {
             String address = intent.getStringExtra("address");
             if(address != null) {
                 String name = mBtAdapter.getRemoteDevice(address).getName();
                 mCurrentlyConnectedTextView.setText(name+'\n'+address);
             }
 
-        } else if(BluetoothLeConnectionService.ACTION_GATT_DISCONNECTED.equals(action)) {
+        } else if(BLEConnectionService.ACTION_GATT_DISCONNECTED.equals(action)) {
             mCurrentlyConnectedTextView.setText("disconnected");
         }
 

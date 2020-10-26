@@ -1,4 +1,4 @@
-package com.example.bluetoothledemo;
+package com.example.bleconnectdemo;
 
 import android.Manifest;
 import android.bluetooth.BluetoothAdapter;
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Register for broadcasts
         IntentFilter filter = new IntentFilter();
-        filter.addAction(BluetoothLeConnectionService.ACTION_DATA_AVAILABLE);
+        filter.addAction(BLEConnectionService.ACTION_DATA_AVAILABLE);
         registerReceiver(mReceiver, filter);
     }
 
@@ -75,21 +75,21 @@ public class MainActivity extends AppCompatActivity {
 
         } else if(id == R.id.enableNotification) {
             Log.d(TAG, "enabling notification");
-            Intent intent = new Intent(this, BluetoothLeConnectionService.class);
-            intent.setAction(BluetoothLeConnectionService.GATT_SET_NOTIFICATION);
+            Intent intent = new Intent(this, BLEConnectionService.class);
+            intent.setAction(BLEConnectionService.GATT_SET_NOTIFICATION);
             intent.putExtra("enabled", true);
             startService(intent);
 
         } else if(id == R.id.sendPing) {
             Log.d(TAG, "sending ping");
-            Intent intent = new Intent(this, BluetoothLeConnectionService.class);
-            intent.setAction(BluetoothLeConnectionService.GATT_WRITE_MESSAGE);
+            Intent intent = new Intent(this, BLEConnectionService.class);
+            intent.setAction(BLEConnectionService.GATT_WRITE_MESSAGE);
             intent.putExtra("message", "ping");
             startService(intent);
 
         } else if(id == R.id.stopService) {
             Log.d(TAG, "stopping service");
-            Intent intent = new Intent(this, BluetoothLeConnectionService.class);
+            Intent intent = new Intent(this, BLEConnectionService.class);
             stopService(intent);
         }
 
@@ -103,8 +103,8 @@ public class MainActivity extends AppCompatActivity {
             String action = intent.getAction();
             //Log.d(TAG, "onReceive intent: " + action);
 
-            if(BluetoothLeConnectionService.ACTION_DATA_AVAILABLE.equals(action)) {
-                String msg = intent.getStringExtra(BluetoothLeConnectionService.EXTRA_DATA);
+            if(BLEConnectionService.ACTION_DATA_AVAILABLE.equals(action)) {
+                String msg = intent.getStringExtra(BLEConnectionService.EXTRA_DATA);
 
                 Toast.makeText(getApplicationContext(),"message received: " + msg, Toast.LENGTH_SHORT).show();
             }
