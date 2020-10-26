@@ -1,2 +1,2 @@
-# BluetoothLeDemo
-android app demoing bluetooth low energy
+# BLEConnectDemo
+Android app demoing BLE (Bluetooth Low Energy Connectivity) based on the Teensyduino framework.
